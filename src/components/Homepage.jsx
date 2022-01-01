@@ -3,50 +3,15 @@ import millify from "millify";
 import { Typography, Row, Col, Statistic } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import { Cryptocurrencies, News } from ".";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 
 const { Title } = Typography;
 
-var options = {
-  method: "GET",
-  url: "https://coinranking1.p.rapidapi.com/coins",
-  params: {
-    referenceCurrencyUuid: "yhjMzLPhuIDl",
-    timePeriod: "24h",
-    orderBy: "marketCap",
-    search: "Bitco",
-    orderDirection: "desc",
-    limit: "50",
-    offset: "0",
-  },
-  headers: {
-    "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-    "x-rapidapi-key": "9c798a43cbmsh370af88385b9732p1791f4jsnbe8f7e361a6e",
-  },
-};
-
-const fetchCryptoData = async () => {
-  return axios
-    .request(options)
-    .then((data) => {
-      console.log(data);
-      return data;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-};
-
 const Homepage = () => {
-  const [cryptoData, setCryptoData] = useState();
-  useEffect(() => {
-    fetchCryptoData().then((data) => {
-      setCryptoData(data || "no data");
-    });
-  }, []);
-  //const cryptoStats = cryptoData.data.data.stats;
-  //console.log(JSON.stringify(cryptoStats.total));
+  const { data, isFetching } = useGetCryptosQuery();
+  const globalStats = data?.data?.stats;
+  if (isFetching) return "isLoading";
 
   return (
     <>
@@ -54,30 +19,57 @@ const Homepage = () => {
         {" "}
         Global Crypto Stats
       </Title>
+
       <Row>
         <Col span={12}>
           <Statistic
             title="Total Cryptocurrencies"
-            value={millify(cryptoData?.data?.data?.stats?.total)}
+            value={JSON.stringify(globalStats?.total)}
           />
+        </Col>
+        <Col span={12}>
           <Statistic
             title="Total Exchanges"
-            value={millify(cryptoData?.data?.data?.stats?.totalExchanges)}
+            value={millify(globalStats?.totalExchanges)}
           />
+        </Col>
+        <Col span={12}>
           <Statistic
             title="Total Market Caps"
-            value={millify(cryptoData?.data?.data?.stats?.totalMarketCap)}
+            value={millify(globalStats?.totalMarketCap)}
           />
+        </Col>
+        <Col span={12}>
           <Statistic
             title="Total 24h Volume"
-            value={millify(cryptoData?.data?.data?.stats?.total24hVolume)}
+            value={millify(globalStats?.total24hVolume)}
           />
+        </Col>
+        <Col span={12}>
           <Statistic
             title="Total Markets"
-            value={millify(cryptoData?.data?.data?.stats?.totalMarkets)}
+            value={millify(globalStats?.totalMarkets)}
           />
         </Col>
       </Row>
+      <div className="home-heading-container">
+        <Title level={2} className="home-title">
+          Top 10 Cryptocurrencies in the world
+        </Title>
+        <Title level={2} className="show-more">
+          <Link to="/cryptocurrencies">Show More</Link>
+        </Title>
+      </div>
+      <Cryptocurrencies simplified />
+      <div className="home-heading-container">
+        <Title level={2} className="home-title">
+          Latest Crypto News
+        </Title>
+        <Title level={2} className="show-more">
+          <Link to="/cryptocurrencies">Show More</Link>
+        </Title>
+      </div>
+      <News simplified />
     </>
   );
 };
