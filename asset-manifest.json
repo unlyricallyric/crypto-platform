@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/crypto-platform/static/css/main.9d53711a.chunk.css",
+    "main.js": "/crypto-platform/static/js/main.fae8549e.chunk.js",
+    "main.js.map": "/crypto-platform/static/js/main.fae8549e.chunk.js.map",
+    "runtime-main.js": "/crypto-platform/static/js/runtime-main.f068a7ae.js",
+    "runtime-main.js.map": "/crypto-platform/static/js/runtime-main.f068a7ae.js.map",
+    "static/css/2.14d445f6.chunk.css": "/crypto-platform/static/css/2.14d445f6.chunk.css",
+    "static/js/2.f7719939.chunk.js": "/crypto-platform/static/js/2.f7719939.chunk.js",
+    "static/js/2.f7719939.chunk.js.map": "/crypto-platform/static/js/2.f7719939.chunk.js.map",
+    "index.html": "/crypto-platform/index.html",
+    "static/css/2.14d445f6.chunk.css.map": "/crypto-platform/static/css/2.14d445f6.chunk.css.map",
+    "static/css/main.9d53711a.chunk.css.map": "/crypto-platform/static/css/main.9d53711a.chunk.css.map",
+    "static/js/2.f7719939.chunk.js.LICENSE.txt": "/crypto-platform/static/js/2.f7719939.chunk.js.LICENSE.txt",
+    "static/media/cryptocurrency.1548aced.png": "/crypto-platform/static/media/cryptocurrency.1548aced.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f068a7ae.js",
+    "static/css/2.14d445f6.chunk.css",
+    "static/js/2.f7719939.chunk.js",
+    "static/css/main.9d53711a.chunk.css",
+    "static/js/main.fae8549e.chunk.js"
+  ]
+}
