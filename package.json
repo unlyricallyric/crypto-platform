@@ -1,6 +1,6 @@
 {
   "homepage": "http://unlyricallyric.github.io/crypto-platform",
-  "name": "cryptoverse",
+  "name": "crypto-platform",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
